@@ -12,24 +12,22 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div>
-          <p>TrybeTunes</p>
-          <li><Link to="/"> Login </Link></li>
-          <li><Link to="/search"> Search </Link></li>
-          <li><Link to="/album/:id"> Album </Link></li>
-          <li><Link to="/favorites"> Favorites </Link></li>
-          <li><Link to="/profile"> Profile </Link></li>
-          <li><Link to="/profile/edit"> Edit Profile </Link></li>
-          <Switch>
-            <Route exact path="/" component={ Login } />
-            <Route exact path="/search" component={ Search } />
-            <Route exact path="/album/:id" component={ Album } />
-            <Route exact path="/favorites" component={ Favorites } />
-            <Route exact path="/profile" component={ Profile } />
-            <Route exact path="/profile/edit" component={ ProfileEdit } />
-            <Route component={ NotFound } />
-          </Switch>
-        </div>
+        <p>TrybeTunes</p>
+        <Link to="/"> Login </Link>
+        <Link to="/search"> Search </Link>
+        <Link to="/album/:id"> Album </Link>
+        <Link to="/favorites"> Favorites </Link>
+        <Link to="/profile"> Profile </Link>
+        <Link to="/profile/edit"> Edit Profile </Link>
+        <Switch>
+          <Route exact path="/" component={ Login } />
+          <Route exact path="/search" component={ Search } />
+          <Route exact path="/album/:id" component={ Album } />
+          <Route exact path="/favorites" component={ Favorites } />
+          <Route exact path="/profile" component={ Profile } />
+          <Route exact path="/profile/edit" component={ ProfileEdit } />
+          <Route component={ NotFound } />
+        </Switch>
       </Router>
     );
   }
