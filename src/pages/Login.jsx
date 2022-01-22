@@ -20,6 +20,11 @@ class Login extends React.Component {
     this.stopLoading();
   }
 
+  componentWillUnmount() {
+    // fix Warning: Can't perform a React state update on an unmounted component
+    this.setState = () => {};
+  }
+
   stopLoading = () => {
     this.setState({ loading: false, redirect: false });
   }
