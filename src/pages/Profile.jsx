@@ -17,6 +17,11 @@ class Profile extends React.Component {
     this.recoverUser();
   }
 
+  componentWillUnmount() {
+    // fix Warning: Can't perform a React state update on an unmounted component
+    this.setState = () => {};
+  }
+
   recoverUser = async () => {
     this.setState({ loading: true });
     const result = await getUser();
