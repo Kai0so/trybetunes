@@ -21,6 +21,11 @@ class Search extends React.Component {
     this.stopLoading();
   }
 
+  componentWillUnmount() {
+    // fix Warning: Can't perform a React state update on an unmounted component
+    this.setState = () => {};
+  }
+
   stopLoading = () => {
     this.setState({ loading: false });
   }
@@ -98,7 +103,7 @@ class Search extends React.Component {
               onChange={ this.handleChange }
             />
             <button
-              type="submit"
+              type="button"
               data-testid="search-artist-button"
               disabled={ searchButtonDisabled }
               onClick={ this.handleClick }

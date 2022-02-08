@@ -18,6 +18,11 @@ class Album extends React.Component {
     this.fetchMusics();
   }
 
+  componentWillUnmount() {
+    // fix Warning: Can't perform a React state update on an unmounted component
+    this.setState = () => {};
+  }
+
   fetchMusics = async () => {
     const { match: { params: { id } } } = this.props;
     const result = await getMusics(id);
@@ -40,16 +45,13 @@ class Album extends React.Component {
         <img src={ albumImg } alt={ albumName } />
         <h3 data-testid="album-name">{ albumName }</h3>
         <br />
-        {albumSongs.map((song) => (
+        {(albumSongs.map((song) => (
           <div key={ song.trackId }>
             <MusicCard
               song={ song }
-              trackId={ song.trackId }
-              trackName={ song.trackName }
-              preview={ song.previewUrl }
             />
           </div>
-        ))}
+        )))}
       </div>
     );
   }

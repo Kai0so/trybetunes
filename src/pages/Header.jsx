@@ -16,6 +16,11 @@ class Header extends React.Component {
     this.getName();
   }
 
+  componentWillUnmount() {
+    // fix Warning: Can't perform a React state update on an unmounted component
+    this.setState = () => {};
+  }
+
   getName = () => {
     this.setState({ loading: true }, async () => {
       const registeredUserObject = await userRequests.getUser();
